@@ -1,0 +1,126 @@
+#include <stdio.h>
+
+int main()
+{
+    int i, j, m, n, k, s;
+    printf("enter 1st sparse matrix no of row and no of column:=  \n");
+    scanf("%d%d", &m, &n);
+    int a[m][n];
+    printf("enter elements=\n");
+    for (i = 0; i < m; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("enter 2st sparse matrix no of row and no of column:=  \n");
+    scanf("%d%d", &m, &n);
+    int b[m][n];
+    printf("enter elements=\n");
+    for (i = 0; i < m; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            scanf("%d", &b[i][j]);
+        }
+    }
+    s = 1;
+    do
+    {
+        printf("\n\t***\n");
+        printf("1)representation of three tuple matrix of matrix a: \n");
+        printf("2)representation of three tuple matrix of matrix B: \n");
+        printf("3)for addition of matrices: \n");
+        printf("0)exit");
+        printf("\nenter your choice ==\n");
+        scanf("%d", &k);
+        switch (k)
+        {
+        case 1:
+        {
+            int i, j;
+            printf("triplet representation of matrix  Ais==\n");
+            printf("row      ");
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (a[i][j] != 0)
+                        printf("%d  ", i);
+                }
+            }
+            printf("\ncolumn   ");
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (a[i][j] != 0)
+                        printf("%d  ", j);
+                }
+            }
+            printf("\nelement  ");
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (a[i][j] != 0)
+                        printf("%d  ", a[i][j]);
+                }
+            }
+            break;
+        }
+        case 2:
+        {
+            int i, j;
+            printf("triplet representation of matrix B is==\n");
+            printf("row      ");
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (b[i][j] != 0)
+                        printf("%d  ", i);
+                }
+            }
+            printf("\ncolumn   ");
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (b[i][j] != 0)
+                        printf("%d  ", j);
+                }
+            }
+            printf("\nelement  ");
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    if (b[i][j] != 0)
+                        printf("%d  ", b[i][j]);
+                }
+            }
+            break;
+        }
+        case 3:
+        {
+           // addition();
+            break;
+        }
+        case 4:
+        {
+           // transpose();
+            break;
+        }
+        case 0:
+        {
+            s = 0;
+            break;
+        }
+        }
+
+    } while (s != 0);
+
+    return 0;
+}
