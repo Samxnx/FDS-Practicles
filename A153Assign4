@@ -1,0 +1,123 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int prn;
+    int roll;
+    char name[10];
+    struct node*next;
+
+};
+struct node* createnode(int n)
+{   
+     struct node* head=( struct node*)malloc(sizeof(struct node));
+      struct node* ptr=(struct node*)malloc(sizeof(struct node));
+     head=ptr;
+    for(int i=0;i<n;i++)
+    {   
+        if(i==0)
+        {
+          printf("this is first node it is for president\n");
+          printf("enter name of president\n");
+          scanf("%s",ptr->name);
+          ptr->prn=00;
+          ptr->roll=00;
+        }
+        else if(i==n-1)
+        {
+          printf("this is last node it is for secretary\n");
+          printf("enter name of secretary\n");
+          scanf("%s",ptr->name);
+          ptr->prn=0;
+          ptr->roll=0;
+        }
+        else
+        {
+        printf("enter prn no,roll no,Name resp of %dth member:\n",i);
+        scanf("%d%d%s",&ptr->prn,&ptr->roll,ptr->name);
+        }
+        ptr->next=(i<n-1)?((struct node*)malloc(sizeof(struct node))):NULL;
+        ptr=ptr->next;
+    }
+    return head;
+}
+void display(struct node* head)
+{   printf("\n\n");
+    printf("****tabular form of data***\n");
+    printf("PRN ROLL NAME\n");
+    while(head!=NULL)
+    {
+        printf("%d  %d   %s\n",head->prn,head->roll,head->name);
+        head=head->next;
+    }
+}
+struct node* addmember(struct node* head)
+{
+    struct node* ptr=(struct node*)malloc(sizeof(struct node));
+    printf("enter prn no ,roll no,Name of member to add\n");
+    scanf("%d%d%s",&ptr->prn,&ptr->roll,ptr->name);
+    ptr->next=head->next;
+    head->next=ptr;
+    return head;
+}
+struct node* deletemember(struct node* head,int n)
+{
+  struct node* ptr=( struct node*)malloc(sizeof(struct node));
+  struct node* temp=( struct node*)malloc(sizeof(struct node));
+  ptr=head;
+  for(int i=0;i<n-2;i++)
+  {
+    head=head->next;
+  }
+  temp=head->next;
+  head->next=temp->next;
+  free(temp);
+  return ptr;
+
+}
+
+int main()
+{   
+    int i,j,t=1,s,n,del;
+    struct node* head;
+    printf("enter total no of members is in club:\n");
+    scanf("%d",&n);
+    head=createnode(n);
+    while(t!=0)
+    {
+       printf("\n\n");
+    printf("****menu****\n");
+    printf("enter 1 for to add member in linked list\n");
+    printf("enter 2 for to delete member in linked list\n");
+    printf("enter 3 to display informaation\n");
+    printf("enter 0 for end the programe\n");
+    scanf("%d",&s);
+    switch(s)
+    {
+        case 1:
+        {
+            head=addmember(head);
+            break;
+        } 
+        case 2:
+        {
+            printf("enter no of member to delete\n");
+           scanf("%d",&del);
+           head=deletemember(head,del);
+            break;
+        }
+        case 3:
+        {
+            display(head);
+            break;
+        }
+        case 0:
+        {
+            t=0;
+            break;
+        }
+    }
+    }
+
+    return 0;
+}
